@@ -6,8 +6,11 @@ from AuthFrame.Utils.OperationFile import Operation
 
 class AuthFrame(object):
 
-    def __init__(self):
-        pass
+    def __init__(self, file_path, sheet_name):
+        self.Operation = Operation(file_path, sheet_name)
 
-    def create_file(self, file_path, sheet_name, labels: list = None):
-        Operation(file_path, sheet_name, labels).create_file()
+    def create_file(self, labels: list = None):
+        self.Operation.create_file(labels)
+
+    def read_file(self, row=None, col=None):
+        return self.Operation.read_file(row, col)
