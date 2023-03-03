@@ -75,25 +75,7 @@ class Operation(object):
             print(traceback.format_exc())
 
     def edit_file(self, row, col, labels: dict):
-        try:
-            workbook = xlwt.Workbook(encoding="UTF-8")
-            worksheet = workbook.add_sheet(sheetname=self.sheet_name, cell_overwrite_ok=False)
-
-            style = xlwt.XFStyle()
-            font = xlwt.Font()
-            font.bold = True
-            font.name = "宋体"
-            font.colour_index = 2
-            style.font = font
-
-            if labels is not None:
-                for col in range(0, len(labels)):
-                    worksheet.write(0, col, labels[col], style)
-            else:
-                worksheet.write(0, 0, '', style)
-            workbook.save(self.file_path)
-        except:
-            print(traceback.format_exc(), "\n表格操作出错！")
+        pass
 
     def delete_file(self):
         return
