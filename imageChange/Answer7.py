@@ -22,42 +22,16 @@
 class Solution:
     def dicesProbability(self, n: int) -> list[float]:
         '''n个骰子的点数'''
-        # arr, result, probability = [1,2,3,4,5,6], [], []
-        # arr.extend(arr*(n-1))
-        # arr.sort()
-        # print(arr)
-        # i =  0
-        # if n == 1:
-        #     result = arr
-        # else:
-        #     while i < len(arr):
-        #         j = len(arr)-1
-        #         while j > i:
-        #             result.append(arr[i]+arr[j])
-        #             j -= 1
-        #         i += 1
-        #     result.sort()
-        # print(result)
-        # for i in list(set(result)):
-        #     appears = int(result.count(i))
-        #     probability.append(round(appears/int(len(result)),5))
-        # print(probability)
-        # print(len(result))
-        #--------------------------------上面实现有问题---------------
         arr = [1,2,3,4,5,6]
         pre = [1/6]*6 #单个骰子各点出现的概率
         i = 2
         while i <= n: #从2个骰子开始计算
             result = [0]*(i*max(arr)-i*min(arr) + 1)#初始化长度列表。概率组成列表的长度=最大-最小+1
-            # print(pre)
             for j in range(len(pre)):
                 for k in range(6):
-                    # print(result)
-                    result[j+k] += pre[j]/6 #n个骰子出现概率组
+                    result[j+k] += pre[j]/6 #n个骰子出现概率组,按组合的索引来看 点数和 出现的前提
             pre = result
             i += 1
-        
-        print([round(_,5) for _ in pre])
         return [round(_,5) for _ in pre]
     
     
