@@ -5,35 +5,11 @@ import requests
 from requests import *
 
 
-class RequestMethod(object):
+class RequestMethod():
     """请求方式"""
 
-    def __init__(
-            self,
-            method=None,
-            url=None,
-            headers=None,
-            files=None,
-            data=None,
-            params=None,
-            auth=None,
-            cookies=None,
-            json=None,
-    ):
-        data = [] if data is None else data
-        files = [] if files is None else files
-        headers = {} if headers is None else headers
-        params = {} if params is None else params
-
-        self.method = method
+    def __init__(self, url):
         self.url = url
-        self.headers = headers
-        self.files = files
-        self.data = data
-        self.json = json
-        self.params = params
-        self.auth = auth
-        self.cookies = cookies
 
     def base_method(self):
         """"""
@@ -43,6 +19,5 @@ class RequestMethod(object):
         get_res = get(self.url)
         return get_res
 
-url = 'http://www.baidu.com'
-res = RequestMethod(url).get_method()
-print(res)
+
+print(RequestMethod('https://www.baidu.com').get_method())
